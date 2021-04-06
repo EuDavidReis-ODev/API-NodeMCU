@@ -18,8 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', methodsRouter);
 
-
-app.listen(8080,()=>{
-    console.log("Rodando na porta 8080.")
+const PORT = process.env.PORT || 8080;
+app.listen(PORT,()=>{
+    console.log("Rodando na porta "+PORT+".")
 })
-//module.exports = app;
