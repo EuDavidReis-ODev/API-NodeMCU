@@ -185,7 +185,7 @@ function setAllDeviceIosData(deviceId,values,res){
             if(error){
                 res.status(STATUS_BAD).send(error)
             }else{
-              res.status(STATUS_CREATED).send(MSG_CREATED
+              res.status(STATUS_CREATED).send(MSG_CREATED)
             }
     
         }
