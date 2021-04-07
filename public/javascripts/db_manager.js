@@ -126,7 +126,7 @@ async function setDeviceData(deviceId,data,res) {
       if(error){
         res.status(STATUS_BAD).send(error)
       }else{
-          res.status(STATUS_CREATED).send("Data updated sucessfully.")
+          res.send("Data updated sucessfully.")
       }
     })
   }
