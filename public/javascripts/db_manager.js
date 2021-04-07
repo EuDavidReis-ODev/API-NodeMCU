@@ -68,7 +68,7 @@ async function getIosData(deviceId,res){
                 "io4": data.io4}
                 
                 console.log(iosArr)
-                res.status(STATUS_OK).send(snapshot.val())
+                res.status(STATUS_OK).send(iosArr)
               }
         else {
           res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
