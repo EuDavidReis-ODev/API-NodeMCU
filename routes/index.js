@@ -4,7 +4,7 @@ const db = require("../public/javascripts/db_manager")
 
 
 /*GETs*/
-router.get('/fulldevicedata',(req,res)=>{
+router.get('/getfulldevicedata',(req,res)=>{
   let deviceId = req.body.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getDataDevice(deviceId,res)
@@ -151,9 +151,17 @@ router.post('/setlocal',(req,res)=>{
   }else{
     db.setDeviceLocal(deviceId,{'clat':clat,'clon':clon},res)
   }
-
-  
-
 })
+
+/*** 
+router.post('/setfulldevicedata',(req,res)=>{
+  let deviceId = req.body.deviceId
+
+  if (clon ==null || clon == undefined || clat==null || clat== undefined) {
+    res.send("Invalid or null values")
+  }else{
+    db.setDeviceLocal(deviceId,{'clat':clat,'clon':clon},res)
+  }
+})*/
 
 module.exports = router;
