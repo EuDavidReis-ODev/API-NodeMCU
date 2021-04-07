@@ -190,9 +190,6 @@ function setAllDeviceIosData(deviceId,values,res){
      )
  }
 
-
-setDeviceData("3h2svuWzIUXKa", obj)
-
   module.exports = {
     getDataDevice,
     getIosData,
