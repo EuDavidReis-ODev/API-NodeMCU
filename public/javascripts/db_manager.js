@@ -196,7 +196,6 @@ function setAllDeviceIosData(deviceId,values,res){
     getDeviceLocal,
     getSingleIosData,
     getUserSafeState,
-    setDeviceData,
     setDeviceLocal,
     setSafeState,
     setSingleDeviceIosData,
