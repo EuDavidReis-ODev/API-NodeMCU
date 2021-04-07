@@ -110,11 +110,18 @@ async function setDeviceData(deviceId,data,res) {
   }
  /*Set user lat and lon*/
 async function setDeviceLocal(deviceId,local,res){
-      firebase.database().ref("devices/"+ deviceId+"/data").update({
-          local
-      })
+
+      console.log("SET LOCAL")
+      firebase.database().ref("devices/"+ deviceId+"/data/local").set(
+        local,(error)=>{
+          if(error){
+              res.send(error)
+          }else{
+              res.send("OK")
+          }
+  })
+}  
   
-  }
  /*Change user safe_state*/
 async function setSafeState(deviceId,state,res){
       firebase.database().ref("devices/"+deviceId+'/data/').update(
@@ -163,14 +170,14 @@ function setAllDeviceIosData(deviceId,values,res){
 //setDeviceData("3h2svuWzIUXKa", obj)
 
   module.exports = {
-    getDadosUser: getDataDevice,
+    getDataDevice,
     getIosData,
-    getLocaleUser: getDeviceLocal,
+    getDeviceLocal,
     getSingleIosData,
     getUserSafeState,
-    setUserData: setDeviceData,
-    setUserLocal: setDeviceLocal,
+    setDeviceData,
+    setDeviceLocal,
     setSafeState,
-    setSingleUserIosData: setSingleDeviceIosData,
-    setAllUserIosData: setAllDeviceIosData
+    setSingleDeviceIosData,
+    setAllDeviceIosData
 }
