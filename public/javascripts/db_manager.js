@@ -8,7 +8,7 @@ const firebase = require('./firebase_confg')
       "io3": false,
       "io4": false,
       "safe_state": true,
-      "id":"3h2svuWzIUXKafYeQBIECj9rUnn1"
+      "userId":"3h2svuWzIUXKafYeQBIECj9rUnn1"
   }
 
   /*Device id test 3h2svuWzIUXKa*/
@@ -184,7 +184,7 @@ function setAllDeviceIosData(deviceId,values,res){
  }
 
 
-//setDeviceData("3h2svuWzIUXKa", obj)
+setDeviceData("3h2svuWzIUXKa", obj)
 
   module.exports = {
     getDataDevice,

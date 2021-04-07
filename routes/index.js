@@ -17,6 +17,7 @@ router.get('/io1',(req,res)=>{
 })
 router.get('/io2',(req,res)=>{
   let deviceId = req.body.deviceId
+  console.log("Params"+req.params)
   console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,2,res)
 })
