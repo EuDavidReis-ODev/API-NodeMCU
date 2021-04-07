@@ -108,20 +108,20 @@ router.post('/setallios',(req,res)=>{
   
   if (req.query.io1==0) io1=false
   else if (req.query.io1==1)io1=true
-  res.status(STATUS_BAD).send("Invalid or null value, the value of io1 must be 0 to false, or 1 to true.")
+  else res.status(STATUS_BAD).send("Invalid or null value, the value of io1 must be 0 to false, or 1 to true.")
 
   if (req.query.io2==0) io2=false
   else if (req.query.io2==1)io2=true
-  res.status(STATUS_BAD).send("Invalid or null value, the value of io2 must be 0 to false, or 1 to true.")
+  else res.status(STATUS_BAD).send("Invalid or null value, the value of io2 must be 0 to false, or 1 to true.")
 
   if (req.query.io3==0) io3=false
   else if (req.query.io3==1)io3=true
-  res.status(STATUS_BAD).send("Invalid or null value, the value of io3 must be 0 to false, or 1 to true.")
+  else res.status(STATUS_BAD).send("Invalid or null value, the value of io3 must be 0 to false, or 1 to true.")
 
 
-    if (req.query.io4==0) io4=false
+  if (req.query.io4==0) io4=false
   else if (req.query.io4==1)io4=true
-  res.status(STATUS_BAD).send("Invalid or null value, the value of io4 must be 0 to false, or 1 to true.")
+  else res.status(STATUS_BAD).send("Invalid or null value, the value of io4 must be 0 to false, or 1 to true.")
 
   values.push(io1)
   values.push(io2)
