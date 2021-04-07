@@ -4,6 +4,12 @@ const db = require("../public/javascripts/db_manager")
 
 
 /*GETs*/
+router.get('/fulldevicedata',(req,res)=>{
+  let deviceId = req.body.deviceId
+  console.log("DeviceId::"+deviceId) 
+  db.getDataDevice(deviceId,res)
+})
+
 router.get('/io1',(req,res)=>{
   let deviceId = req.body.deviceId
   console.log("DeviceId::"+deviceId) 

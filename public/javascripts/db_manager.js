@@ -16,12 +16,20 @@ const firebase = require('./firebase_confg')
   /*GETS*/
  /*Return full data of user*/ 
 async function getDataDevice(deviceId,res){
-    let dbUserDataRef = firebase.database().ref("devices/"+deviceId + '/data');
-    dbUserDataRef.on('value', (snapshot) => {
-      const data = snapshot.val();
-        console.log(data)
-        res.send(data)
-    });
+    firebase.database().ref('devices/'+deviceId+"/data")
+    .get().then(function(snapshot) {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+          res.send(snapshot.val())
+        }
+        else {
+            res.send("Dado inexistente.")
+          console.log("No data available");
+        }
+      }).catch(function(error) {
+        console.error(error);
+        res.send(error)
+      });
  }
  /*Return CLAT and CLON of board*/ 
 async function getDeviceLocal(deviceId,res){
