@@ -4,6 +4,8 @@ const STATUS_NOTFOUND = 404
 const STATUS_OK  = 200
 const STATUS_BAD = 400
 const STATUS_CREATED = 201
+const MSG_CREATED = "Data updated sucessfully."
+const MSG_NOMATCHING = "No matching data."
 
 const obj = {
       "local":{"clat": 33.00,
@@ -28,7 +30,7 @@ async function getDataDevice(deviceId,res){
           res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-          res.status(STATUS_NOTFOUND).send("No matching data")
+          res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
         }
       }).catch(function(error) {
         res.status(STATUS_BAD).send(error)
@@ -43,7 +45,7 @@ async function getDeviceLocal(deviceId,res){
           res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-          res.status(STATUS_NOTFOUND).send("No matching data")
+          res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
         }
       }).catch(function(error) {
         console.error(error);
@@ -69,7 +71,7 @@ async function getIosData(deviceId,res){
                 res.status(STATUS_OK).send(snapshot.val())
               }
         else {
-          res.status(STATUS_NOTFOUND).send("No matching data")
+          res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
         }
       }).catch(function(error) {
         console.error(error);
@@ -87,7 +89,7 @@ async function getSingleIosData(deviceId,index,res){
           res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-          res.status(STATUS_NOTFOUND).send("No matching data")
+          res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
         }
       }).catch(function(error) {
         console.error(error);
@@ -106,7 +108,7 @@ async function getUserSafeState(deviceId,res){
           res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-            res.status(STATUS_NOTFOUND).send("No matching data")
+            res.status(STATUS_NOTFOUND).send(MSG_NOMATCHING)
         }
       }).catch(function(error) {
         console.error(error);
@@ -141,7 +143,7 @@ async function setDeviceLocal(deviceId,local,res){
           if(error){
             res.status(STATUS_BAD).send(error)
           }else{
-              res.status(STATUS_CREATED).send("Data updated sucessfully.")
+              res.status(STATUS_CREATED).send(MSG_CREATED)
           }
   })
 }  
@@ -153,7 +155,7 @@ async function setSafeState(deviceId,state,res){
             if(error){
               res.status(STATUS_BAD).send(error)
             }else{
-              res.status(STATUS_CREATED).send("Data updated sucessfully.")
+              res.status(STATUS_CREATED).send(MSG_CREATED)
             }
     
         })
@@ -164,7 +166,7 @@ function setSingleDeviceIosData(deviceId,index,value,res){
         if(error){
           res.status(STATUS_BAD).send(error)
         }else{
-          res.status(STATUS_CREATED).send("Data updated sucessfully.")
+          res.status(STATUS_CREATED).send(MSG_CREATED)
         }
 
     });
@@ -183,7 +185,7 @@ function setAllDeviceIosData(deviceId,values,res){
             if(error){
                 res.status(STATUS_BAD).send(error)
             }else{
-              res.status(STATUS_CREATED).send("OK")
+              res.status(STATUS_CREATED).send(MSG_CREATED
             }
     
         }
