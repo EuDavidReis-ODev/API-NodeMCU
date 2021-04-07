@@ -57,7 +57,7 @@ router.post('/setIo1',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,1,false,res)
   }else{
-    res.send("Valor inválido")
+    res.send("Invalid or null value")
   }
 })
 router.post('/setIo2',(req,res)=>{
@@ -69,7 +69,7 @@ router.post('/setIo2',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,2,false,res)
   }else{
-    res.send("Valor inválido")
+    res.send("Invalid or null value")
   }
 })
 router.post('/setIo3',(req,res)=>{
@@ -81,7 +81,7 @@ router.post('/setIo3',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,3,false,res)
   }else{
-    res.send("Valor inválido")
+    res.send("Invalid or null value")
   }
   
 })
@@ -94,7 +94,7 @@ router.post('/setIo4',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,4,false,res)
   }else{
-    res.send("Valor inválido")
+    res.send("Invalid or null value")
   }
 
 })
@@ -105,20 +105,20 @@ router.post('/setallios',(req,res)=>{
   
   if (req.query.io1==0) io1=false
   else if (req.query.io1==1)io1=true
-  else {res.send("Valor do io1 inválido.")}
+  else {res.send("The value of io1 is null or invalid")}
 
   if (req.query.io2==0) io2=false
   else if (req.query.io2==1)io2=true
-  else {res.send("Valor do io2 inválido.")}
+  else {res.send("The value of io2 is null or invalid")}
 
   if (req.query.io3==0) io3=false
   else if (req.query.io3==1)io3=true
-  else {res.send("Valor do io3 inválido.")}
+  else {res.send("The value of io3 is null or invalid")}
 
 
     if (req.query.io4==0) io4=false
   else if (req.query.io4==1)io4=true
-  else {res.send("Valor do io4 inválido.")}
+  else {res.send("The value of io4 is null or invalid")}
 
   values.push(io1)
   values.push(io2)
