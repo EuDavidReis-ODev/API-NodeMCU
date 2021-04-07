@@ -121,8 +121,14 @@ async function getUserSafeState(deviceId,res){
  /*Set full user data*/ 
 async function setDeviceData(deviceId,data,res) {
     firebase.database().ref("devices/" + deviceId).set({
-      data
-    });
+      data,
+    },(error)=>{
+      if(error){
+        res.status(STATUS_BAD).send(error)
+      }else{
+          res.status(STATUS_CREATED).send("Data updated sucessfully.")
+      }
+    })
   }
  /*Set user lat and lon*/
 async function setDeviceLocal(deviceId,local,res){
@@ -131,7 +137,7 @@ async function setDeviceLocal(deviceId,local,res){
       firebase.database().ref("devices/"+ deviceId+"/data/local").set(
         local,(error)=>{
           if(error){
-              res.send(error)
+            res.status(STATUS_BAD).send(error)
           }else{
               res.status(STATUS_CREATED).send("Data updated sucessfully.")
           }
@@ -143,7 +149,7 @@ async function setSafeState(deviceId,state,res){
       firebase.database().ref("devices/"+deviceId+'/data/').update(
           {"safe_state":state},(error)=>{
             if(error){
-                res.send(error)
+              res.status(STATUS_BAD).send(error)
             }else{
               res.status(STATUS_CREATED).send("Data updated sucessfully.")
             }
@@ -154,7 +160,7 @@ async function setSafeState(deviceId,state,res){
 function setSingleDeviceIosData(deviceId,index,value,res){
     firebase.database().ref("devices/"+deviceId + '/data/io'+index).set(value,(error)=>{
         if(error){
-            res.send(error)
+          res.status(STATUS_BAD).send(error)
         }else{
           res.status(STATUS_CREATED).send("Data updated sucessfully.")
         }
@@ -173,7 +179,7 @@ function setAllDeviceIosData(deviceId,values,res){
              "io4": values[3]
          },(error)=>{
             if(error){
-                res.send(error)
+                res.status(STATUS_BAD).send(error)
             }else{
               res.status(STATUS_CREATED).send("OK")
             }
