@@ -125,7 +125,7 @@ router.post('/setallios',(req,res)=>{
   values.push(io3)
   values.push(io4)
   
-  db.setAllUserIosData(deviceId,values,res)
+  db.setAllDeviceIosData(deviceId,values,res)
 
 })
 router.post('/ssafe_state',(req,res)=>{
