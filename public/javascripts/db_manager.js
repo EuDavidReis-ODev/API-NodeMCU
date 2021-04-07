@@ -118,18 +118,20 @@ async function getUserSafeState(deviceId,res){
 
 
  /*SETs*/
- /*Set full user data*/ 
+ /*Set full user data*/
+/* Retirado momentaneamente.****
+ 
 async function setDeviceData(deviceId,data,res) {
     firebase.database().ref("devices/" + deviceId).set({
       data,
     },(error)=>{
-      /*if(error){
+      if(error){
         res.status(STATUS_BAD).send(error)
       }else{
           res.send("Data updated sucessfully.")
-      }*/
+      }
     })
-  }
+  }*/
  /*Set user lat and lon*/
 async function setDeviceLocal(deviceId,local,res){
 
