@@ -123,11 +123,11 @@ async function setDeviceData(deviceId,data,res) {
     firebase.database().ref("devices/" + deviceId).set({
       data,
     },(error)=>{
-      if(error){
+      /*if(error){
         res.status(STATUS_BAD).send(error)
       }else{
           res.send("Data updated sucessfully.")
-      }
+      }*/
     })
   }
  /*Set user lat and lon*/
