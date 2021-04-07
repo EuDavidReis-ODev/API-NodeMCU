@@ -53,9 +53,9 @@ router.post('/setIo1',(req,res)=>{
   let value = req.query.value
 
   if(value == 1){
-    db.setSingleUserIosData(deviceId,1,true,res)
+    db.setSingleDeviceIosData(deviceId,1,true,res)
   }else if(value == 0){
-    db.setSingleUserIosData(deviceId,1,false,res)
+    db.setSingleDeviceIosData(deviceId,1,false,res)
   }else{
     res.send("Valor inválido")
   }
@@ -65,9 +65,9 @@ router.post('/setIo2',(req,res)=>{
   let value = req.query.value
 
   if(value == 1){
-    db.setSingleUserIosData(deviceId,2,true,res)
+    db.setSingleDeviceIosData(deviceId,2,true,res)
   }else if(value == 0){
-    db.setSingleUserIosData(deviceId,2,false,res)
+    db.setSingleDeviceIosData(deviceId,2,false,res)
   }else{
     res.send("Valor inválido")
   }
@@ -77,9 +77,9 @@ router.post('/setIo3',(req,res)=>{
   let value = req.query.value
 
   if(value == 1){
-    db.setSingleUserIosData(deviceId,3,true,res)
+    db.setSingleDeviceIosData(deviceId,3,true,res)
   }else if(value == 0){
-    db.setSingleUserIosData(deviceId,3,false,res)
+    db.setSingleDeviceIosData(deviceId,3,false,res)
   }else{
     res.send("Valor inválido")
   }
@@ -90,9 +90,9 @@ router.post('/setIo4',(req,res)=>{
   let value = req.query.value
 
   if(value == 1){
-    db.setSingleUserIosData(deviceId,4,true,res)
+    db.setSingleDeviceIosData(deviceId,4,true,res)
   }else if(value == 0){
-    db.setSingleUserIosData(deviceId,4,false,res)
+    db.setSingleDeviceIosData(deviceId,4,false,res)
   }else{
     res.send("Valor inválido")
   }
