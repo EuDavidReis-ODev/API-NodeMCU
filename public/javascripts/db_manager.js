@@ -1,13 +1,15 @@
 const firebase = require('./firebase_confg')
 
+/*ERROR CODES*/ 
 const STATUS_NOTFOUND = 404
 const STATUS_OK  = 200
 const STATUS_BAD = 400
 const STATUS_CREATED = 201
+/*ERROR MSGS*/
 const MSG_CREATED = "Data updated sucessfully."
 const MSG_NOMATCHING = "No matching data."
 
-const obj = {
+/*const obj = {
       "local":{"clat": 33.00,
                 "clon": 59.00},
       "io1": false,
@@ -18,7 +20,7 @@ const obj = {
       "userId":"3h2svuWzIUXKafYeQBIECj9rUnn1"
   }
 
-  /*Device id test 3h2svuWzIUXKa*/
+  //Device id test 3h2svuWzIUXKa*/
 
   /*GETS*/
  /*Return full data of user*/ 
@@ -124,7 +126,7 @@ async function getUserSafeState(deviceId,res){
 /* Retirado momentaneamente.****
  
 async function setDeviceData(deviceId,data,res) {
-    firebase.database().ref("devices/" + deviceId).set({
+    firebase.database().ref("devices/" + deviceId).push({
       data,
     },(error)=>{
       if(error){
@@ -134,6 +136,8 @@ async function setDeviceData(deviceId,data,res) {
       }
     })
   }*/
+
+
  /*Set user lat and lon*/
 async function setDeviceLocal(deviceId,local,res){
 
@@ -147,7 +151,6 @@ async function setDeviceLocal(deviceId,local,res){
           }
   })
 }  
-  
  /*Change user safe_state*/
 async function setSafeState(deviceId,state,res){
       firebase.database().ref("devices/"+deviceId+'/data/').update(

@@ -9,34 +9,27 @@ const STATUS_BAD = 400
 /*GETs*/
 router.get('/getfulldevicedata',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("DeviceId::"+deviceId) 
   db.getDataDevice(deviceId,res)
 })
-
 router.get('/io1',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("DeviceId::"+deviceId) 
+ 
   db.getSingleIosData(deviceId,1,res)
 })
 router.get('/io2',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("Params"+req.params)
-  console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,2,res)
 })
 router.get('/io3',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,3,res)
 })
 router.get('/io4',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,4,res)
 })
 router.get('/allios',(req,res)=>{
   let deviceId = req.query.deviceId
-  console.log("DeviceId::"+deviceId) 
   db.getIosData(deviceId,res)
 })
 router.get('/gsafe_state',(req,res)=>{
@@ -140,7 +133,7 @@ router.post('/ssafe_state',(req,res)=>{
   }else if(value == 0){
     db.setSafeState(deviceId,false,res)
   }else{
-    res.send("Valor inválido")
+    res.status(STATUS_BAD).send("Invalid or null value, the value must be 0 to false, or 1 to true.")
   }
 
 })
