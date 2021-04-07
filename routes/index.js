@@ -33,23 +33,11 @@ router.get('/gsafe_state',(req,res)=>{
   let deviceId = req.body.deviceId
   db.getUserSafeState(deviceId,res)
 })
-router.post('/setlocal',(req,res)=>{
+router.get('/getlocal',(req,res)=>{
   let deviceId = req.body.deviceId
-  let clon,clat 
-  clon = req.body.clon
-  clat = req.body.clat
-  let arr = []
-  if (clon ==null || clon == undefined || clat==null || clat== undefined) {
-    res.send("Invalid or null values")
-  }else{
-    arr.push(clat)
-    arr.push(clon)
-    db.setDeviceLocal(deviceId,arr,res)
-  }
-
-  
-
+  db.getDeviceLocal(deviceId,res)
 })
+
 
 
 /*SETs*/
@@ -144,6 +132,23 @@ router.post('/ssafe_state',(req,res)=>{
   }else{
     res.send("Valor inválido")
   }
+
+})
+router.post('/setlocal',(req,res)=>{
+  let deviceId = req.body.deviceId
+  let clon,clat 
+  clon = req.body.clon
+  clat = req.body.clat
+  let arr = []
+  if (clon ==null || clon == undefined || clat==null || clat== undefined) {
+    res.send("Invalid or null values")
+  }else{
+    arr.push(clat)
+    arr.push(clon)
+    db.setDeviceLocal(deviceId,arr,res)
+  }
+
+  
 
 })
 

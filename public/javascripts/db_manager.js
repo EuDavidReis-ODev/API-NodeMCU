@@ -24,13 +24,22 @@ async function getDataDevice(deviceId,res){
     });
  }
  /*Return CLAT and CLON of board*/ 
-async function getDeviceLocal(deviceId){
-    let dbUserDataRef = firebase.database().ref("devices/"+deviceId + '/data/local');
-    dbUserDataRef.on('value', (snapshot) => {
-      const data = snapshot.val();
-        console.log(data)
-        send(data);
-    });
+async function getDeviceLocal(deviceId,res){
+    firebase.database().ref('devices/'+deviceId+"/data/local")
+    .get().then(function(snapshot) {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+          res.send(snapshot.val())
+        }
+        else {
+            res.send("Dado inexistente.")
+          console.log("No data available");
+        }
+      }).catch(function(error) {
+        console.error(error);
+        res.send(error)
+      });
+
  }
  /*Return all ios user values*/
 async function getIosData(deviceId,res){
