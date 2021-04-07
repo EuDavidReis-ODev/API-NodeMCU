@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 const db = require("../public/javascripts/db_manager")
 
+const STATUS_NOTFOUND = 404
+const STATUS_OK  = 200
+const STATUS_BAD = 400
 
 /*GETs*/
 router.get('/getfulldevicedata',(req,res)=>{
@@ -57,7 +60,7 @@ router.post('/setIo1',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,1,false,res)
   }else{
-    res.send("Invalid or null value")
+    res.status(STATUS_BAD).send("Invalid or null value, the value must be 0 to false, or 1 to true.")
   }
 })
 router.post('/setIo2',(req,res)=>{
@@ -69,7 +72,7 @@ router.post('/setIo2',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,2,false,res)
   }else{
-    res.send("Invalid or null value")
+    res.status(STATUS_BAD).send("Invalid or null value, the value must be 0 to false, or 1 to true.")
   }
 })
 router.post('/setIo3',(req,res)=>{
@@ -81,7 +84,7 @@ router.post('/setIo3',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,3,false,res)
   }else{
-    res.send("Invalid or null value")
+    res.status(STATUS_BAD).send("Invalid or null value, the value must be 0 to false, or 1 to true.")
   }
   
 })
@@ -94,7 +97,7 @@ router.post('/setIo4',(req,res)=>{
   }else if(value == 0){
     db.setSingleDeviceIosData(deviceId,4,false,res)
   }else{
-    res.send("Invalid or null value")
+    res.status(STATUS_BAD).send("Invalid or null value, the value must be 0 to false, or 1 to true.")
   }
 
 })
@@ -105,20 +108,20 @@ router.post('/setallios',(req,res)=>{
   
   if (req.query.io1==0) io1=false
   else if (req.query.io1==1)io1=true
-  else {res.send("The value of io1 is null or invalid")}
+  res.status(STATUS_BAD).send("Invalid or null value, the value of io1 must be 0 to false, or 1 to true.")
 
   if (req.query.io2==0) io2=false
   else if (req.query.io2==1)io2=true
-  else {res.send("The value of io2 is null or invalid")}
+  res.status(STATUS_BAD).send("Invalid or null value, the value of io2 must be 0 to false, or 1 to true.")
 
   if (req.query.io3==0) io3=false
   else if (req.query.io3==1)io3=true
-  else {res.send("The value of io3 is null or invalid")}
+  res.status(STATUS_BAD).send("Invalid or null value, the value of io3 must be 0 to false, or 1 to true.")
 
 
     if (req.query.io4==0) io4=false
   else if (req.query.io4==1)io4=true
-  else {res.send("The value of io4 is null or invalid")}
+  res.status(STATUS_BAD).send("Invalid or null value, the value of io4 must be 0 to false, or 1 to true.")
 
   values.push(io1)
   values.push(io2)
@@ -148,7 +151,7 @@ router.post('/setlocal',(req,res)=>{
   clat = req.query.clat
 
   if (clon ==null || clon == undefined || clat==null || clat== undefined) {
-    res.send("Invalid or null values")
+    res.status(STATUS_BAD).send("Invalid or null values, need 2 number values.")
   }else{
     db.setDeviceLocal(deviceId,{'clat':clat,'clon':clon},res)
   }

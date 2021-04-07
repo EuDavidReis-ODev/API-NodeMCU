@@ -1,6 +1,11 @@
 const firebase = require('./firebase_confg')
 
-  const obj = {
+const STATUS_NOTFOUND = 404
+const STATUS_OK  = 200
+const STATUS_BAD = 400
+const STATUS_CREATED = 201
+
+const obj = {
       "local":{"clat": 33.00,
                 "clon": 59.00},
       "io1": false,
@@ -20,15 +25,13 @@ async function getDataDevice(deviceId,res){
     .get().then(function(snapshot) {
         if (snapshot.exists()) {
           console.log(snapshot.val());
-          res.send(snapshot.val())
+          res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-            res.send("Dado inexistente.")
-          console.log("No data available");
+          res.status(STATUS_NOTFOUND).send("No matching data")
         }
       }).catch(function(error) {
-        console.error(error);
-        res.send(error)
+        res.status(STATUS_BAD).send(error)
       });
  }
  /*Return CLAT and CLON of board*/ 
@@ -37,15 +40,14 @@ async function getDeviceLocal(deviceId,res){
     .get().then(function(snapshot) {
         if (snapshot.exists()) {
           console.log(snapshot.val());
-          res.send(snapshot.val())
+          res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-            res.send("Dado inexistente.")
-          console.log("No data available");
+          res.status(STATUS_NOTFOUND).send("No matching data")
         }
       }).catch(function(error) {
         console.error(error);
-        res.send(error)
+        res.status(STATUS_BAD).send(error)
       });
 
  }
@@ -64,15 +66,14 @@ async function getIosData(deviceId,res){
                 "io4": data.io4}
                 
                 console.log(iosArr)
-                res.send(iosArr)
-        }
+                res.status(STATUS_OK).send(snapshot.val())
+              }
         else {
-            res.send("Dado inexistente.")
-          console.log("No data available");
+          res.status(STATUS_NOTFOUND).send("No matching data")
         }
       }).catch(function(error) {
         console.error(error);
-        res.send(error)
+        res.status(STATUS_BAD).send(error)
       });
 
 
@@ -83,15 +84,14 @@ async function getSingleIosData(deviceId,index,res){
     .get().then(function(snapshot) {
         if (snapshot.exists()) {
           console.log(snapshot.val());
-          res.send(snapshot.val())
+          res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-            res.send("Dado inexistente.")
-          console.log("No data available");
+          res.status(STATUS_NOTFOUND).send("No matching data")
         }
       }).catch(function(error) {
         console.error(error);
-        res.send(error)
+        res.status(STATUS_BAD).send(error)
       });
       
 
@@ -103,15 +103,14 @@ async function getUserSafeState(deviceId,res){
     .get().then(function(snapshot) {
         if (snapshot.exists()) {
           console.log(snapshot.val());
-          res.send(snapshot.val())
+          res.status(STATUS_OK).send(snapshot.val())
         }
         else {
-            res.send("Dado inexistente.")
-          console.log("No data available");
+            res.status(STATUS_NOTFOUND).send("No matching data")
         }
       }).catch(function(error) {
         console.error(error);
-        res.send(error)
+        res.status(STATUS_BAD).send(error)
       });
       
  }
@@ -134,7 +133,7 @@ async function setDeviceLocal(deviceId,local,res){
           if(error){
               res.send(error)
           }else{
-              res.send("OK")
+              res.status(STATUS_CREATED).send("Data updated sucessfully.")
           }
   })
 }  
@@ -146,7 +145,7 @@ async function setSafeState(deviceId,state,res){
             if(error){
                 res.send(error)
             }else{
-                res.send("OK")
+              res.status(STATUS_CREATED).send("Data updated sucessfully.")
             }
     
         })
@@ -157,7 +156,7 @@ function setSingleDeviceIosData(deviceId,index,value,res){
         if(error){
             res.send(error)
         }else{
-            res.send("OK")
+          res.status(STATUS_CREATED).send("Data updated sucessfully.")
         }
 
     });
@@ -176,7 +175,7 @@ function setAllDeviceIosData(deviceId,values,res){
             if(error){
                 res.send(error)
             }else{
-                res.send("OK")
+              res.status(STATUS_CREATED).send("OK")
             }
     
         }
