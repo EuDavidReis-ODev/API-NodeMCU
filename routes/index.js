@@ -139,13 +139,11 @@ router.post('/setlocal',(req,res)=>{
   let clon,clat 
   clon = req.body.clon
   clat = req.body.clat
-  let arr = []
+
   if (clon ==null || clon == undefined || clat==null || clat== undefined) {
     res.send("Invalid or null values")
   }else{
-    arr.push(clat)
-    arr.push(clon)
-    db.setDeviceLocal(deviceId,arr,res)
+    db.setDeviceLocal(deviceId,{'clat':clat,'clon':clon},res)
   }
 
   
