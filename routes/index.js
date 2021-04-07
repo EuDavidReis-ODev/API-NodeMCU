@@ -5,43 +5,43 @@ const db = require("../public/javascripts/db_manager")
 
 /*GETs*/
 router.get('/getfulldevicedata',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getDataDevice(deviceId,res)
 })
 
 router.get('/io1',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,1,res)
 })
 router.get('/io2',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("Params"+req.params)
   console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,2,res)
 })
 router.get('/io3',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,3,res)
 })
 router.get('/io4',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getSingleIosData(deviceId,4,res)
 })
 router.get('/allios',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   console.log("DeviceId::"+deviceId) 
   db.getIosData(deviceId,res)
 })
 router.get('/gsafe_state',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   db.getUserSafeState(deviceId,res)
 })
 router.get('/getlocal',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   db.getDeviceLocal(deviceId,res)
 })
 
@@ -49,8 +49,8 @@ router.get('/getlocal',(req,res)=>{
 
 /*SETs*/
 router.post('/setIo1',(req,res)=>{
-  let deviceId = req.body.deviceId
-  let value = req.body.value
+  let deviceId = req.query.deviceId
+  let value = req.query.value
 
   if(value == 1){
     db.setSingleUserIosData(deviceId,1,true,res)
@@ -61,8 +61,8 @@ router.post('/setIo1',(req,res)=>{
   }
 })
 router.post('/setIo2',(req,res)=>{
-  let deviceId = req.body.deviceId
-  let value = req.body.value
+  let deviceId = req.query.deviceId
+  let value = req.query.value
 
   if(value == 1){
     db.setSingleUserIosData(deviceId,2,true,res)
@@ -73,8 +73,8 @@ router.post('/setIo2',(req,res)=>{
   }
 })
 router.post('/setIo3',(req,res)=>{
-  let deviceId = req.body.deviceId
-  let value = req.body.value
+  let deviceId = req.query.deviceId
+  let value = req.query.value
 
   if(value == 1){
     db.setSingleUserIosData(deviceId,3,true,res)
@@ -86,8 +86,8 @@ router.post('/setIo3',(req,res)=>{
   
 })
 router.post('/setIo4',(req,res)=>{
-  let deviceId = req.body.deviceId
-  let value = req.body.value
+  let deviceId = req.query.deviceId
+  let value = req.query.value
 
   if(value == 1){
     db.setSingleUserIosData(deviceId,4,true,res)
@@ -99,25 +99,25 @@ router.post('/setIo4',(req,res)=>{
 
 })
 router.post('/setallios',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   let values = []
   let io1,io2,io3,io4
   
-  if (req.body.io1==0) io1=false
-  else if (req.body.io1==1)io1=true
+  if (req.query.io1==0) io1=false
+  else if (req.query.io1==1)io1=true
   else {res.send("Valor do io1 inválido.")}
 
-  if (req.body.io2==0) io2=false
-  else if (req.body.io2==1)io2=true
+  if (req.query.io2==0) io2=false
+  else if (req.query.io2==1)io2=true
   else {res.send("Valor do io2 inválido.")}
 
-  if (req.body.io3==0) io3=false
-  else if (req.body.io3==1)io3=true
+  if (req.query.io3==0) io3=false
+  else if (req.query.io3==1)io3=true
   else {res.send("Valor do io3 inválido.")}
 
 
-    if (req.body.io4==0) io4=false
-  else if (req.body.io4==1)io4=true
+    if (req.query.io4==0) io4=false
+  else if (req.query.io4==1)io4=true
   else {res.send("Valor do io4 inválido.")}
 
   values.push(io1)
@@ -129,8 +129,8 @@ router.post('/setallios',(req,res)=>{
 
 })
 router.post('/ssafe_state',(req,res)=>{
-  let deviceId = req.body.deviceId
-  let value = req.body.value
+  let deviceId = req.query.deviceId
+  let value = req.query.value
   console.log(value)
   if(value == 1){
     db.setSafeState(deviceId,true,res)
@@ -142,10 +142,10 @@ router.post('/ssafe_state',(req,res)=>{
 
 })
 router.post('/setlocal',(req,res)=>{
-  let deviceId = req.body.deviceId
+  let deviceId = req.query.deviceId
   let clon,clat 
-  clon = req.body.clon
-  clat = req.body.clat
+  clon = req.query.clon
+  clat = req.query.clat
 
   if (clon ==null || clon == undefined || clat==null || clat== undefined) {
     res.send("Invalid or null values")
