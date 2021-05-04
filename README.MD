@@ -26,5 +26,5 @@ And you need to replace the configuration in the project, precisely the configur
 
 ## API Test
 
-In this [link](https://www.getpostman.com/collections/c9bb03c2d913c29fddd7) you can test the API calls, through this documentation available on Postman. The API is currently hosted on the [Heroku](https://www.heroku.com) platform.
+In this [link](https://documenter.getpostman.com/view/13158450/TzCS4kmC) you can test the API calls, through this documentation available on Postman. The API is currently hosted on the [Heroku](https://www.heroku.com) platform.
 
