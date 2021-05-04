@@ -4,8 +4,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 //other imports
-
-
 const methodsRouter = require('./routes/index');
 
 const app = express();
@@ -20,5 +18,5 @@ app.use('/', methodsRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=>{
-    console.log("Rodando na porta "+PORT+".")
+    console.log("On port::"+PORT+".")
 })
